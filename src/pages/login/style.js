@@ -71,4 +71,24 @@ p{
     background-color: var(--grey-1);
     color:var(--grey-0);
 }
+
+#error__message{
+    color:var(--color-primary);
+}
+
+@media(max-width:1440px){
+    form{
+        width:30vw;
+    }
+}
+@media(max-width:768px){
+    form{
+        width: 50vw;
+    }
+}
+@media(max-width:425px){
+    form{
+        width: 70vw;
+    }
+}
 `

@@ -47,11 +47,11 @@ export const Login = () => {
                 <h3>Login</h3>
                 <label htmlFor="email">Email</label>
                 <input onChange={(event) => { setEmail(event.target.value)}} name="email" type="text" placeholder="Digite seu email aqui..." {...register("email")} />
-                {errors.email ? <p>{errors.email.message}</p> : null}
+                {errors.email ? <p id="error__message">{errors.email.message}</p> : null}
 
                 <label htmlFor="password">Senha</label>
                 <input onChange={(event) => { setPassword(event.target.value)}} name="password" type="password" placeholder="Digite sua senha aqui..." {...register("password")} />
-                {errors.password ? <p>{errors.password.message}</p> : null}
+                {errors.password ? <p id="error__message">{errors.password.message}</p> : null}
                 
                 <button id="button__confirm" type="submit">Entrar</button>
                 <h6>Ainda não possui uma conta?</h6>

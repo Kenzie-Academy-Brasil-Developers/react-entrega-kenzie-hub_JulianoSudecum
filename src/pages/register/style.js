@@ -101,4 +101,24 @@ select{
     margin-bottom:5px;
 }
 
+#error__message{
+    color:var(--color-primary);
+    text-align:left;
+}
+
+@media(max-width:1440px){
+    form{
+        width: 30vw;
+    }
+}
+@media(max-width:768px){
+    form{
+        width: 50vw;
+    }
+}
+@media(max-width:425px){
+    form{
+        width: 70vw;
+    }
+}
 `
