@@ -14,7 +14,7 @@ export const HeaderHome = () => {
     return(
         <HeaderStyled>
             <div>
-                <img src="../../public/Logo.png" alt="" />
+                <img src="public\Logo.png" alt="" />
                 <button onClick={clickFunction} id="button__logout">Sair</button>
             </div>
         </HeaderStyled>
