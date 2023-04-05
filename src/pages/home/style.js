@@ -8,6 +8,8 @@ gap: 1rem;
 background-color: var(--grey-4);
 color: var(--grey-0);
 
+animation: containerAnimation 1s;
+
     #div__profile{
         display:flex;
         align-items:center;
@@ -24,5 +26,14 @@ color: var(--grey-0);
         align-items:center;
         justify-content: center;
         padding: 2rem;
+    }
+
+    @keyframes containerAnimation{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
     }
 `

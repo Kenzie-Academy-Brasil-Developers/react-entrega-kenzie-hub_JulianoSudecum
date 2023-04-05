@@ -48,7 +48,8 @@ export const RegisterPage = () => {
                 {errors.password ? <p id="error__message">{errors.password.message}</p> : null}
 
                 <label htmlFor="password_confirm">Confirmar senha</label>
-                <input type="password" placeholder="Digite novamente sua senha"/>
+                <input type="password" placeholder="Digite novamente sua senha" {...register("confirm")}/>
+                {errors.confirm ? <p id="error__message">{errors.confirm.message}</p> : null}
 
                 <label htmlFor="bio">Bio</label>
                 <input name="bio" type="text" placeholder="Fale sobre você" {...register("bio")} />

@@ -12,6 +12,8 @@ justify-content: center;
 
 gap: 1rem;
 
+animation: containerAnimation 1s;
+
 header{
     display:flex;
     align-items:center;
@@ -45,6 +47,11 @@ input{
     border: 2px solid var(--grey-1);
     border-radius:3px;  
     background-color: var(--grey-2);
+    transition: 0.8s;
+
+    :hover{
+        border: 2px solid var(--grey-0);
+    }
 }
 
 label{
@@ -85,10 +92,16 @@ p{
 #button__confirm{
     background-color:var(--color-primary);
     color:var(--grey-0);
+
+    transition: 0.5s;
+
+    :hover{
+        background-color: var(--color-primary-focus);
+    }
 }
 
 select{
-    height:40px;
+    height:45px;
     color:var(--grey-0);
     background-color:var(--grey-2);
     border: 2px solid var(--grey-1);
@@ -99,6 +112,11 @@ select{
     outline:none;
 
     margin-bottom:5px;
+    transition: 0.8s;
+
+    :hover{
+        border: 2px solid var(--grey-0);
+    }
 }
 
 #error__message{
@@ -119,6 +137,15 @@ select{
 @media(max-width:425px){
     form{
         width: 70vw;
+    }
+}
+
+@keyframes containerAnimation{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
     }
 }
 `
