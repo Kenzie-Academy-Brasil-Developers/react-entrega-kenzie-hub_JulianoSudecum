@@ -42,7 +42,7 @@ export const Login = () => {
 
     return(
         <DivContainer>
-            <img src="src\assets\Logo.png" alt="" />
+            <img src="Logo.png" alt="" />
             <form onSubmit={handleSubmit(submit)}>
                 <h3>Login</h3>
                 <label htmlFor="email">Email</label>
