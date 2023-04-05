@@ -6,14 +6,16 @@ import { api } from "../../services/api"
 import { formSchema } from "./formSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginContainer } from "./style"
+import { useNavigate } from "react-router-dom"
 
 export const RegisterPage = () => {
-
+    const navigate = useNavigate()
     const { register , handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(formSchema)
     })
 
     const submit = (formData) =>{
+        console.log(formData)
 
         async function registerRequest(){
             try {
@@ -21,6 +23,7 @@ export const RegisterPage = () => {
                     formData
                 )
                 toast.success("Usuario criado com sucesso", {autoClose:2500, theme:"dark"})
+                navigate("/")
             } 
             catch (error) {
                 toast.error("Ocorreu um erro ao registrar-se", {autoClose:2500, theme:"dark"})
@@ -59,8 +62,8 @@ export const RegisterPage = () => {
                 <input name="contact" type="text" placeholder="Opção de contato" {...register("contact")} />
                 {errors.contact ? <p id="error__message">{errors.contact.message}</p> : null}
 
-                <label htmlFor="module">Selecionar modulo</label>
-                <select {...register("course_module")} name="module" id="">
+                <label htmlFor="course_module">Selecionar modulo</label>
+                <select {...register("course_module")} name="course_module">
                     <option value=""></option>
                     <option value="Primeiro Modulo">Primeiro Modulo</option>
                     <option value="Segundo Modulo">Segundo Modulo</option>
