@@ -9,7 +9,7 @@ export const HeaderRegister = () => {
 
     return(
         <header>
-            <img src="../../public/Logo.png" alt="" />
+            <img src="src\assets\Logo.png" alt="" />
             <button onClick={backLogin} id="back__login">Voltar</button>
         </header>
     )
