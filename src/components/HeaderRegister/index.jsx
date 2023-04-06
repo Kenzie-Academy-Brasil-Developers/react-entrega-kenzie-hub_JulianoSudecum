@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { HeaderRegisterStyled } from "./style"
 
 export const HeaderRegister = () => {
-    const navigate = useNavigate()
-
-    function backLogin(){
-        navigate("/")
-    }
 
     return(
-        <header>
+        <HeaderRegisterStyled>
             <img src="Logo.png" alt="" />
-            <button onClick={backLogin} id="back__login">Voltar</button>
-        </header>
+            <Link to={"/"} id="back__login">Voltar</Link>
+        </HeaderRegisterStyled>
     )
 }

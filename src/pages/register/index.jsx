@@ -15,7 +15,6 @@ export const RegisterPage = () => {
     })
 
     const submit = (formData) =>{
-        console.log(formData)
 
         async function registerRequest(){
             try {
@@ -64,7 +63,7 @@ export const RegisterPage = () => {
 
                 <label htmlFor="course_module">Selecionar modulo</label>
                 <select {...register("course_module")} name="course_module">
-                    <option value=""></option>
+                    <option value="">Escolha uma opção</option>
                     <option value="Primeiro Modulo">Primeiro Modulo</option>
                     <option value="Segundo Modulo">Segundo Modulo</option>
                     <option value="Terceiro Modulo">Terceiro Modulo</option>

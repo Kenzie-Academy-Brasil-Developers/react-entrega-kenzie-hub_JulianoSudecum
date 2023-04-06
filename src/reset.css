@@ -6,20 +6,9 @@ body{
     height: 100vh;
 
     background-color: var(--grey-4);
-
-    animation: bodyAnimation 0.7s;
 }
 
 
 *{
     font-family: 'Inter', sans-serif;
-}
-
-@keyframes bodyAnimation{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
 }

@@ -34,7 +34,7 @@ input{
     background-color: var(--grey-2);
     transition: 0.8s;
 
-    :hover{
+    :focus{
         border: 2px solid var(--grey-0);
     }
 }
@@ -43,7 +43,7 @@ label{
     margin:0px;
     padding:0px;
 
-    color: var(--grey-1);
+    color: var(--grey-0);
 }
 
 button{
@@ -75,6 +75,7 @@ p{
     color:var(--grey-0);
 
     transition: 0.5s;
+    font-size:14px;
 
     :hover{
         background-color:var(--color-primary-focus);
@@ -84,6 +85,13 @@ p{
 #button__register{
     background-color: var(--grey-1);
     color:var(--grey-0);
+    text-decoration:none;
+
+    padding: 0.6rem 1.2rem;
+    border-radius:3px;
+
+    text-align:center;
+    font-size:14px;
 
     transition: 0.5s;
 

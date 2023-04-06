@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { api } from "../../services/api"
 import { formSchema } from "./formSchema"
@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { DivContainer } from "./style"
 
 export const Login = () => {
-
 
     const { register, handleSubmit, formState: { errors }  } = useForm({
         resolver: zodResolver(formSchema)
@@ -34,12 +33,6 @@ export const Login = () => {
         loginRequest()
     }
 
-    function goToRegister(){
-        navigate("/register")
-    }
-
-
-
     return(
         <DivContainer>
             <img src="Logo.png" alt="" />
@@ -55,7 +48,7 @@ export const Login = () => {
                 
                 <button id="button__confirm" type="submit">Entrar</button>
                 <h6>Ainda não possui uma conta?</h6>
-                <button id="button__register" onClick={goToRegister}>Cadastrar-se</button>
+                <Link to={"/register"} id="button__register">Cadastrar-se</Link>
             </form>
         </DivContainer>
     )

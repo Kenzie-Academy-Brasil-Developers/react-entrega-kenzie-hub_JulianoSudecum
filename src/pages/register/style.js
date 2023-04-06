@@ -49,7 +49,7 @@ input{
     background-color: var(--grey-2);
     transition: 0.8s;
 
-    :hover{
+    :focus{
         border: 2px solid var(--grey-0);
     }
 }
@@ -58,7 +58,7 @@ label{
     margin:0px;
     padding:0px;
     font-size:14px;
-    color:var(--grey-1);
+    color:var(--grey-0);
 }
 
 button{
@@ -90,7 +90,7 @@ p{
 }
 
 #button__confirm{
-    background-color:var(--color-primary);
+    background-color:var(--color-primary-negative);
     color:var(--grey-0);
 
     transition: 0.5s;

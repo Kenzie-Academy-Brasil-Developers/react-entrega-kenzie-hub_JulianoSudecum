@@ -20,7 +20,7 @@ export const Home = () => {
                     const resp = await api.get(`/users/${userId}`)
                     setUser(resp.data)
                 } catch (error) {
-                    console.log(error)
+                    return error
                 }
             }
             getUser()
