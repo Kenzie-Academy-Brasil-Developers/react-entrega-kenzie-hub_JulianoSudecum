@@ -1,32 +1,21 @@
-import { useEffect, useId, useState } from "react"
-import { json, useNavigate } from "react-router-dom"
+import { useContext, useEffect, useId, useState } from "react"
+import { json, Navigate, useNavigate } from "react-router-dom"
 import { HeaderHome } from "../../components/HeaderHome"
+import { LiTech } from "../../components/LiTech"
+import { AuthContext } from "../../providers/AuthContext"
 import { api } from "../../services/api"
 import { MainStyled } from "./style"
 
+
 export const Home = () => {
-    const token = localStorage.getItem("@token")
-    const userId = localStorage.getItem("@user_id")
     const navigate = useNavigate()
-    const [ user , setUser ] = useState({})
+    
+    const { user } = useContext(AuthContext)
 
-    useEffect(() =>{
-        if(!token){
-            navigate("/register")
-        }
-        else{
-            async function getUser(){
-                try {
-                    const resp = await api.get(`/users/${userId}`)
-                    setUser(resp.data)
-                } catch (error) {
-                    return error
-                }
-            }
-            getUser()
-        }
-    }, [])
-
+    if(!user){
+        return <Navigate to="/"/>
+    }
+    
     return(
         <>
             <HeaderHome/>
@@ -36,10 +25,21 @@ export const Home = () => {
                     <p>{user.course_module}</p>
                 </div>
                 <div id="div__info">
-                    <h3>Que pena! Estamos em desenvolvimento :(</h3>
-                    <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+                    <div>
+                        <h3>Tecnologias</h3>
+                        <button id="open__modal">+</button>
+                    </div>
+                    <ul>
+                        {
+                            user.techs.map(tech => <LiTech key={tech.id} name={tech.title} level={tech.status}/>)
+                        }
+                    </ul>
                 </div>
             </MainStyled>
+            <dialog open>
+                <h1>Teste dialog</h1>
+                <input type="text" />
+            </dialog>
         </>
     )
 }

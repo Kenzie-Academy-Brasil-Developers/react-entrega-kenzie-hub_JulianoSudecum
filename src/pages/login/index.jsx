@@ -6,6 +6,8 @@ import { api } from "../../services/api"
 import { formSchema } from "./formSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { DivContainer } from "./style"
+import { useContext } from "react"
+import { AuthContext } from "../../providers/AuthContext"
 
 export const Login = () => {
 
@@ -14,29 +16,15 @@ export const Login = () => {
     })
     const navigate = useNavigate()
  
-    const submit = (formData) => {
+    const { loginRequest } = useContext(AuthContext)
 
-        async function loginRequest(){
-            try {
-                const resp = await api.post("/sessions", 
-                formData
-            )
-            localStorage.setItem("@user_id", resp.data.user.id)
-            localStorage.setItem("@token", resp.data.token)
-            navigate("/home")
-            toast.success("Login bem sucedido", {autoClose:2500, theme:"dark"})
-            } 
-            catch (error) {
-                toast.error("Algo deu errado no login", {autoClose:2500, theme:"dark"})
-            }
-        }
-        loginRequest()
-    }
+
+    
 
     return(
         <DivContainer>
             <img src="Logo.png" alt="" />
-            <form onSubmit={handleSubmit(submit)}>
+            <form onSubmit={handleSubmit(loginRequest)}>
                 <h3>Login</h3>
                 <label htmlFor="email">Email</label>
                 <input onChange={(event) => { setEmail(event.target.value)}} name="email" type="text" placeholder="Digite seu email aqui..." {...register("email")} />
