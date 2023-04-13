@@ -211,6 +211,13 @@ animation: containerAnimation 1s;
     }
 }
 
+#error__message{
+    color:var(--color-primary);
+    margin:0px 0px 0px 15px;
+    height:10px;
+    font-size:14px;
+}
+
 @media(max-width:768px){
     #div__info > div{
         width:85%;
