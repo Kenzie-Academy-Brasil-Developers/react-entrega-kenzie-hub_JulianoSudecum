@@ -6,6 +6,7 @@ import { toast } from "react-toastify"
 import { patchSchema } from "../../pages/home/patchSchema"
 import { AuthContext } from "../../providers/AuthContext"
 import { api } from "../../services/api"
+import { ModalStyled } from "./modalStyle"
 import { TechnologyStyled } from "./style"
 
 export const LiTech = ({item , techList}) => {
@@ -59,13 +60,13 @@ export const LiTech = ({item , techList}) => {
 
     return(
         <>
-            <TechnologyStyled onClick={openModal}>
+            <TechnologyStyled id="li__tech" onClick={openModal}>
                 <p id="tech__name">{item.title}</p>
                 <p id="tech__level">{item.status}</p>
             </TechnologyStyled>
 
             {modal &&(
-                <div id="div__container">
+                <ModalStyled id="div__container">
                     <div id="overlay"></div>
                     <form onSubmit={handleSubmit(patchTech)} id="modal__container">
                         <header id="modal__header">
@@ -83,12 +84,12 @@ export const LiTech = ({item , techList}) => {
                             <option value="Avançado">Avançado</option>
                         </select>
                         {errors.status ? <p id="error__message">{errors.status.message}</p> : null}
-                        <div>
-                            <button type="submit">Salvar Alterações</button>
-                            <button onClick={deleteTech}>Excluir</button>
+                        <div id="div__buttons">
+                            <button id="patch__button" type="submit">Salvar Alterações</button>
+                            <button id="delete__button" onClick={deleteTech}>Excluir</button>
                         </div>
                     </form>
-                </div>
+                </ModalStyled>
             )}
         </>
     )

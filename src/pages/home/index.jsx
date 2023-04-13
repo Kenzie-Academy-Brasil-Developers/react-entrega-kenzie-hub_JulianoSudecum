@@ -64,7 +64,7 @@ export const Home = () => {
                         <h3>Tecnologias</h3>
                         <button onClick={openModal} id="open__modal">+</button>
                     </div>
-                    <ul>
+                    <ul id="ul__tech">
                         {
                             tech.map(item => <LiTech key={item.id} item={item} techList={tech}/>)
                         }
@@ -89,7 +89,7 @@ export const Home = () => {
                             <option value="Avançado">Avançado</option>
                         </select>
                         {errors.status ? <p id="error__message">{errors.status.message}</p> : null}
-                        <button type="submit">Cadastrar tecnologia</button>
+                        <button id="create__tech" type="submit">Cadastrar tecnologia</button>
                     </form>
                 </div>
             )}
