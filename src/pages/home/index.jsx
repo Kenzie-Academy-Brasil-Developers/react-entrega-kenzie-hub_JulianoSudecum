@@ -20,8 +20,6 @@ export const Home = () => {
     const token = localStorage.getItem("@hub-token")
     const { user, setUser, tech, setTech } = useContext(AuthContext)
 
-
-
     if(!user){
         return <Navigate to="/"/>
     }
@@ -68,7 +66,7 @@ export const Home = () => {
                     </div>
                     <ul>
                         {
-                            tech.map(tech => <LiTech key={tech.id} tech={tech}/>)
+                            tech.map(item => <LiTech key={item.id} item={item} techList={tech}/>)
                         }
                     </ul>
                 </div>

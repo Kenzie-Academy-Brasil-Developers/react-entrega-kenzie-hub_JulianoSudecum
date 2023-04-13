@@ -11,7 +11,6 @@ export const AuthContext = createContext({})
 export const AuthProvider = ({children}) =>{
     const navigate = useNavigate()
     const [ user , setUser ] = useState(null)
-
     const [ tech , setTech ] = useState(null)
 
     useEffect(()=>{
@@ -44,10 +43,22 @@ export const AuthProvider = ({children}) =>{
         catch (error) {
             toast.error("Algo deu errado no login", {autoClose:2500, theme:"dark"})
         }
-    }  
+    }
+
+    async function getTechs(){
+        const token = localStorage.getItem("@hub-token")
+        const { sub } = jwtDecode(token)
+        try {
+            const resp = await api.get(`/users/${sub}`)
+            setTech(resp.data.techs)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return(
         <>
-            <AuthContext.Provider value={{loginRequest, user, tech, setTech}}>
+            <AuthContext.Provider value={{loginRequest, user, tech, setTech, getTechs}}>
                 {children}
             </AuthContext.Provider>
         </>
