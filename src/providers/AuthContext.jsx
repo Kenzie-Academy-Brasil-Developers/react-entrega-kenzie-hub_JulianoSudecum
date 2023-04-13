@@ -12,6 +12,8 @@ export const AuthProvider = ({children}) =>{
     const navigate = useNavigate()
     const [ user , setUser ] = useState(null)
 
+    const [ tech , setTech ] = useState(null)
+
     useEffect(()=>{
         const loadUser = async () =>{
             const token = localStorage.getItem("@hub-token")
@@ -22,6 +24,7 @@ export const AuthProvider = ({children}) =>{
 
             const { sub } = jwtDecode(token)
             const response = await api.get(`/users/${sub}`)
+            setTech(response.data.techs)
             setUser(response.data)
         }
         loadUser()
@@ -44,7 +47,7 @@ export const AuthProvider = ({children}) =>{
     }  
     return(
         <>
-            <AuthContext.Provider value={{loginRequest, user}}>
+            <AuthContext.Provider value={{loginRequest, user, tech, setTech}}>
                 {children}
             </AuthContext.Provider>
         </>
