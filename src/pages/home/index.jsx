@@ -6,6 +6,8 @@ import { toast } from "react-toastify"
 import { HeaderHome } from "../../components/HeaderHome"
 import { LiTech } from "../../components/LiTech"
 import { AuthContext } from "../../providers/AuthContext"
+import { TechContext } from "../../providers/TechContext"
+import { UserContext } from "../../providers/UserContext"
 import { api } from "../../services/api"
 import { createSchema } from "./createSchema"
 import { MainStyled } from "./style"
@@ -18,7 +20,8 @@ export const Home = () => {
     const navigate = useNavigate()
     
     const token = localStorage.getItem("@hub-token")
-    const { user, setUser, tech, setTech } = useContext(AuthContext)
+    const { tech , setTech  } = useContext(TechContext)
+    const { user , setUser  } = useContext(UserContext)
 
     if(!user){
         return <Navigate to="/"/>

@@ -1,25 +1,22 @@
-import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
-import { api } from "../../services/api"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { formSchema } from "./formSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { DivContainer } from "./style"
 import { useContext } from "react"
-import { AuthContext } from "../../providers/AuthContext"
+import { UserContext } from "../../providers/UserContext"
+
 
 export const Login = () => {
 
     const { register, handleSubmit, formState: { errors }  } = useForm({
         resolver: zodResolver(formSchema)
     })
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
  
-    const { loginRequest } = useContext(AuthContext)
+    const { loginRequest } = useContext(UserContext)
+    // const { authFunciton } = useContext(AuthContext)
 
-
-    
 
     return(
         <DivContainer>

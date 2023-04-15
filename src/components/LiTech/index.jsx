@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import { patchSchema } from "../../pages/home/patchSchema"
-import { AuthContext } from "../../providers/AuthContext"
+import { TechContext } from "../../providers/TechContext"
 import { api } from "../../services/api"
 import { ModalStyled } from "./modalStyle"
 import { TechnologyStyled } from "./style"
@@ -15,7 +15,7 @@ export const LiTech = ({item , techList}) => {
     })
 
     const token = localStorage.getItem("@hub-token")
-    const { getTechs } = useContext(AuthContext)
+    const { getTechs } = useContext(TechContext)
 
     const [ modal, setModal ] = useState(false)
     const openModal = () =>{

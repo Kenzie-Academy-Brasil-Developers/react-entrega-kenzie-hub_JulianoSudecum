@@ -3,6 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { RoutesMain } from './routes';
 import { GlobalStyle } from './GlobalStyles'
 import { AuthProvider } from './providers/AuthContext';
+import { UserProvider } from './providers/UserContext';
+import { TechProvider } from './providers/TechContext';
 
 function App() {
 
@@ -10,7 +12,11 @@ function App() {
     <>
       <GlobalStyle/>
       <AuthProvider>
-        <RoutesMain/>
+        <TechProvider>
+          <UserProvider>
+            <RoutesMain/>
+          </UserProvider>
+        </TechProvider>
       </AuthProvider>
       <ToastContainer/>
     </>
