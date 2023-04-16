@@ -1,5 +1,4 @@
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import { api } from "../services/api";

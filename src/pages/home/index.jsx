@@ -1,11 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useContext, useEffect, useId, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-import { json, Navigate, useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { HeaderHome } from "../../components/HeaderHome"
 import { LiTech } from "../../components/LiTech"
-import { AuthContext } from "../../providers/AuthContext"
 import { TechContext } from "../../providers/TechContext"
 import { UserContext } from "../../providers/UserContext"
 import { api } from "../../services/api"
@@ -22,9 +21,7 @@ export const Home = () => {
     const token = localStorage.getItem("@hub-token")
     const { tech , setTech  } = useContext(TechContext)
     const { user , setUser  } = useContext(UserContext)
-    const { HomeAuth } = useContext(AuthContext)
    
-
     if(!token){
         return <Navigate to="/"/>
     }

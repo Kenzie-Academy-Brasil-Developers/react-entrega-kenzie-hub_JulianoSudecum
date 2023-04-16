@@ -1,4 +1,3 @@
-import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { createContext, useState } from "react";
@@ -52,7 +51,6 @@ export const UserProvider = ({children}) => {
             toast.error("Algo deu errado no login", {autoClose:2500, theme:"dark"})
         }
     }
-
 
     return(
         <>

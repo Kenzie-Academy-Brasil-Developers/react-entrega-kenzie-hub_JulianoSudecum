@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { formSchema } from "./formSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { DivContainer } from "./style"
 import { useContext } from "react"
 import { UserContext } from "../../providers/UserContext"
-import { AuthContext } from "../../providers/AuthContext"
 
 
 export const Login = () => {
@@ -13,13 +12,9 @@ export const Login = () => {
     const { register, handleSubmit, formState: { errors }  } = useForm({
         resolver: zodResolver(formSchema)
     })
-    // const navigate = useNavigate()
  
     const { loginRequest } = useContext(UserContext)
-    const {  LoginAuth } = useContext(AuthContext)
    
-
-
     return(
         <DivContainer>
             <img src="Logo.png" alt="" />
