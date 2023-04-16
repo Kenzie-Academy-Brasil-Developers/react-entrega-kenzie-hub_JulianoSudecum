@@ -25,6 +25,7 @@ export const Home = () => {
     if(!token){
         return <Navigate to="/"/>
     }
+
     useEffect(()=>{
         const token = localStorage.getItem("@hub-token")
         if(token){
@@ -77,8 +78,15 @@ export const Home = () => {
             <HeaderHome/>
             <MainStyled>
                 <div id="div__profile">
-                    <h3>Ola, {user.name}</h3>
-                    <p>{user.course_module}</p>
+                    { user ? (
+                        <>
+                            <h3>Ola, {user.name}</h3>
+                            <p>{user.course_module}</p>
+                        </>
+                    ) : (
+                        <></>
+                    )
+                }
                 </div>
                 <div id="div__info">
                     <div>
@@ -86,8 +94,11 @@ export const Home = () => {
                         <button onClick={openModal} id="open__modal">+</button>
                     </div>
                     <ul id="ul__tech">
-                        {
+                        { tech ? (
                             tech.map(item => <LiTech key={item.id} item={item} techList={tech}/>)
+                        ) : (
+                            <></>
+                        )
                         }
                     </ul>
                 </div>
