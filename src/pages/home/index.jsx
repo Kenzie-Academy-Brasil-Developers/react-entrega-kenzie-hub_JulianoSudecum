@@ -22,10 +22,31 @@ export const Home = () => {
     const token = localStorage.getItem("@hub-token")
     const { tech , setTech  } = useContext(TechContext)
     const { user , setUser  } = useContext(UserContext)
+    const { HomeAuth } = useContext(AuthContext)
+   
 
-    if(!user){
+    if(!token){
         return <Navigate to="/"/>
     }
+    useEffect(()=>{
+        const token = localStorage.getItem("@hub-token")
+        if(token){
+            const authHomeVerificate = async () =>{
+                try {
+                    const resp = await api.get("/profile", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                    setUser(resp.data)
+                    setTech(resp.data.techs)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            authHomeVerificate()
+        }
+    },[])
 
     const [ modal, setModal ] = useState(false)
     const openModal = () =>{

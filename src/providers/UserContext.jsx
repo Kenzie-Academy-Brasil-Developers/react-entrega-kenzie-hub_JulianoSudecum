@@ -15,6 +15,26 @@ export const UserProvider = ({children}) => {
 
     const { tech , setTech } = useContext(TechContext)
 
+    useEffect(()=>{
+        const token = localStorage.getItem("@hub-token")
+        if(token){
+            const getUserEffect = async () =>{
+                try {
+                    const resp = await api.get("/profile", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                    setUser(resp.data)
+                    setTech(resp.data.techs)
+                    navigate("/home")
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getUserEffect()
+        }
+    },[])
 
     async function loginRequest(formData){
         try {
@@ -36,7 +56,7 @@ export const UserProvider = ({children}) => {
 
     return(
         <>
-            <UserContext.Provider value={{ loginRequest , user }}>
+            <UserContext.Provider value={{ loginRequest , user, setUser }}>
                 {children}
             </UserContext.Provider>
         </>

@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { DivContainer } from "./style"
 import { useContext } from "react"
 import { UserContext } from "../../providers/UserContext"
+import { AuthContext } from "../../providers/AuthContext"
 
 
 export const Login = () => {
@@ -15,7 +16,8 @@ export const Login = () => {
     // const navigate = useNavigate()
  
     const { loginRequest } = useContext(UserContext)
-    // const { authFunciton } = useContext(AuthContext)
+    const {  LoginAuth } = useContext(AuthContext)
+   
 
 
     return(
