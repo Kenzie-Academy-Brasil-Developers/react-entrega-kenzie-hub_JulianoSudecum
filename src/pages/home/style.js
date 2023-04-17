@@ -44,7 +44,7 @@ body.active-modal {
     max-width: 600px;
     min-width: 300px;
 
-    width:30vw;
+    width:20vw;
     height:30vh;
 
     display: flex;

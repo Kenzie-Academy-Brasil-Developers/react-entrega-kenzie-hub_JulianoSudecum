@@ -6,6 +6,8 @@ import { formSchema } from "./formSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginContainer } from "./style"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserContext"
 
 export const RegisterPage = () => {
     const navigate = useNavigate()
@@ -13,21 +15,10 @@ export const RegisterPage = () => {
         resolver: zodResolver(formSchema)
     })
 
-    const submit = (formData) =>{
+    const { registerRequest } = useContext(UserContext)
 
-        async function registerRequest(){
-            try {
-                const resp = await api.post("/users", 
-                    formData
-                )
-                toast.success("Usuario criado com sucesso", {autoClose:2500, theme:"dark"})
-                navigate("/")
-            } 
-            catch (error) {
-                toast.error("Ocorreu um erro ao registrar-se", {autoClose:2500, theme:"dark"})
-            }
-        }
-        registerRequest()
+    const submit = (formData) =>{
+        registerRequest(formData)
     }
 
     return(

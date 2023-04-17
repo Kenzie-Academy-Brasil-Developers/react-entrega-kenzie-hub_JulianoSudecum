@@ -78,7 +78,7 @@ export const LiTech = ({item , techList}) => {
                         {errors.title ? <p id="error__message">{errors.title.message}</p> : null}
                         <label htmlFor="status">Selecionar status</label>
                         <select name="status" id="" {...register("status")}>
-                            <option value=""></option>
+                            <option value="">{item.status}</option>
                             <option value="Iniciante">Iniciante</option>
                             <option value="Intermediario">Intermediario</option>
                             <option value="Avançado">Avançado</option>

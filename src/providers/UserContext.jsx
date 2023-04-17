@@ -14,6 +14,19 @@ export const UserProvider = ({children}) => {
 
     const { tech , setTech } = useContext(TechContext)
 
+    async function registerRequest(data){
+        try {
+            const resp = await api.post("/users", 
+                data
+            )
+            toast.success("Usuario criado com sucesso", {autoClose:2500, theme:"dark"})
+            navigate("/")
+        } 
+        catch (error) {
+            toast.error("Ocorreu um erro ao registrar-se", {autoClose:2500, theme:"dark"})
+        }
+    }
+
     useEffect(()=>{
         const token = localStorage.getItem("@hub-token")
         if(token){
@@ -54,7 +67,7 @@ export const UserProvider = ({children}) => {
 
     return(
         <>
-            <UserContext.Provider value={{ loginRequest , user, setUser }}>
+            <UserContext.Provider value={{ loginRequest , user, setUser , registerRequest }}>
                 {children}
             </UserContext.Provider>
         </>
